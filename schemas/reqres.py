@@ -32,11 +32,5 @@ update = Schema({
     "job": str,
     "updatedAt": str
 })
-#facts = Schema(
-    #{
-    #    "data": [fact]
-   # },
-  #  extra=ALLOW_EXTRA,
-  #  required=True
-#)
+
 
