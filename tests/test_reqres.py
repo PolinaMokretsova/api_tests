@@ -1,53 +1,58 @@
 import allure
-import requests
 from pytest_voluptuous import S
 from schemas.reqres import single_user, register, create, update
+from utils.helpers import authorization, data_register, data_create, data_update
 from utils.sessions import reqres
 
 
 def test_single_user():
-    response = reqres().get('/api/users/2')
+    response = reqres().get('/api/users/2', cookies=authorization())
 
-    assert response.status_code == 200
-    assert S(single_user) == response.json()
+    with allure.step('status code is 200'):
+        assert response.status_code == 200
+    with allure.step('single_user schema is correct'):
+        assert S(single_user) == response.json()
 
 
 def test_register():
-    response = reqres().post('/api/register', data={
-        "email": "eve.holt@reqres.in",
-        "password": "pistol"
-    })
+    response = reqres().post('/api/register', cookies=authorization(), data=data_register())
 
-    assert response.status_code == 200
-    assert int(response.json()['id']) == 4
-    assert S(register) == response.json()
+    with allure.step('status code is 200'):
+        assert response.status_code == 200
+    with allure.step('"id" in response = 4'):
+        assert int(response.json()['id']) == 4
+    with allure.step('register schema is correct'):
+        assert S(register) == response.json()
 
 
 def test_create():
-    response = reqres().post('/api/users', data={
-        "name": "morpheus",
-        "job": "leader"
-    })
+    response = reqres().post('/api/users', cookies=authorization(), data=data_create())
 
-    assert response.status_code == 201
-    assert str(response.json()['name']) == 'morpheus'
-    assert str(response.json()['job']) == 'leader'
-    assert S(create) == response.json()
+    with allure.step('status code is 201'):
+        assert response.status_code == 201
+    with allure.step('"name" in response = morpheus'):
+        assert str(response.json()['name']) == 'morpheus'
+    with allure.step('"job" in response = leader'):
+        assert str(response.json()['job']) == 'leader'
+    with allure.step('create schema is correct'):
+        assert S(create) == response.json()
 
 
 def test_update():
-    response = reqres().put('/api/users/2', data={
-        "name": "morpheus",
-        "job": "zion resident"
-    })
+    response = reqres().put('/api/users/2', cookies=authorization(), data=data_update())
 
-    assert response.status_code == 200
-    assert str(response.json()['name']) == 'morpheus'
-    assert str(response.json()['job']) == 'zion resident'
-    assert S(update) == response.json()
+    with allure.step('status code is 200'):
+        assert response.status_code == 200
+    with allure.step('"name" in response = morpheus'):
+        assert str(response.json()['name']) == 'morpheus'
+    with allure.step('"job" in response = zion resident'):
+        assert str(response.json()['job']) == 'zion resident'
+    with allure.step('update schema is correct'):
+        assert S(update) == response.json()
 
 
 def test_delayed_response():
-    response = reqres().get('/api/users?delay=3')
+    response = reqres().get('/api/users?delay=3', cookies=authorization())
 
-    assert response.status_code == 200
+    with allure.step('status code is 200'):
+        assert response.status_code == 200
