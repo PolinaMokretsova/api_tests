@@ -45,7 +45,7 @@
 [К оглавлению ⬆](#оглавление)
 
 <a name="report"></a>
-# [Отчет](https://jenkins.autotests.cloud/job/tochka_tests/allure/) о выполнении тестов
+# [Отчет](https://jenkins.autotests.cloud/job/api_tests/allure/) о выполнении тестов
 ![](media/allurereport_api.png)
 
 Каждый тест, независимо от результата, состоит из:
