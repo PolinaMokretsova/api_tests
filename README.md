@@ -72,6 +72,6 @@
 
 <a name="дашборд"></a>
 # Настроен Dashboard с разными показателями
-![](media/testops_api2.pnh)
+![](media/testops_api2.png)
 
 [К оглавлению ⬆](#оглавление)
