@@ -15,10 +15,10 @@
 <a name="технологии"></a>
 # Использованны слудующие технологии:
 <p align="center">
-<img width="16%" title="Gradle" src="media/pytest.png">
-<img width="16%" title="Java" src="media/python.png">
-<img width="16%" title="JUnit5" src="media/requests.png">
-<img width="16%" title="IntelliJ IDEA" src="media/pycharm.png">
+<img width="16%" title="pytest" src="media/pytest.png">
+<img width="16%" title="python" src="media/python.png">
+<img width="16%" title="requests" src="media/requests.png">
+<img width="16%" title="pycharm" src="media/pycharm.png">
 <img width="16%" title="Allure Report" src="media/allure.svg">
 <img width="16%" title="GitHub" src="media/github.svg">
 <img width="16%" title="Jenkins" src="media/jenkins.svg">
